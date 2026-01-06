@@ -6,7 +6,7 @@
   "mcpServers": {
     "kiro-subagents": {
       "command": "{{BUDGIE_BINARY}}",
-      "args": ["--agent-timeout", "15m", "--sandbox"],
+      "args": ["-agent-timeout", "15m", "-verbose", "-sandbox"],
       "type": "stdio"
     }
   },
