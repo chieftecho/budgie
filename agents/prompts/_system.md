@@ -1,8 +1,4 @@
-# System Instructions for Sub-Agents
-
-These instructions are automatically injected into every sub-agent prompt by the MCP server.
-
----
+# System Instructions for Kiro Agents
 
 ## Working Directory
 
@@ -14,7 +10,7 @@ All file operations, git commands, and code analysis should be performed in this
 
 ## Response File Output
 
-Write your final answer to: `{{RESPONSE_FILE}}`
+**VERY IMPORTANT:** Write your final answer to: `{{RESPONSE_FILE}}`
 
 **Requirements:**
 - Plain text format only
@@ -29,4 +25,4 @@ Write only the essential information that answers the question.
 
 ## Additional System Instructions
 
-(Future system-level instructions can be added here)
+none

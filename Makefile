@@ -28,7 +28,7 @@ install: build
 		    "$$file" > "$(KIRO_DIR)/agents/$$(basename $$file)"; \
 	done
 	cp agents/prompts/*.md $(KIRO_DIR)/sub-agents/prompts/
-	cp prompts/*.md $(KIRO_DIR)/prompts/
+	-cp prompts/*.md $(KIRO_DIR)/prompts/
 
 # Cross-compile for multiple platforms
 build-all:

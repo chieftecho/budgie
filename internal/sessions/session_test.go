@@ -8,7 +8,7 @@ import (
 
 func TestGetWorkspaceDir_NewSession(t *testing.T) {
 	tmpDir := t.TempDir()
-	mgr := NewManager(tmpDir)
+	mgr := NewManager(tmpDir, false)
 
 	dir, err := mgr.GetWorkspaceDir("")
 	if err != nil {
@@ -23,14 +23,14 @@ func TestGetWorkspaceDir_NewSession(t *testing.T) {
 		t.Errorf("Directory was not created: %s", dir)
 	}
 
-	if len(mgr.createdDirs) != 1 {
-		t.Errorf("Expected 1 tracked dir, got %d", len(mgr.createdDirs))
+	if len(mgr.sessions) != 1 {
+		t.Errorf("Expected 1 tracked session, got %d", len(mgr.sessions))
 	}
 }
 
 func TestGetWorkspaceDir_ExistingSession(t *testing.T) {
 	tmpDir := t.TempDir()
-	mgr := NewManager(tmpDir)
+	mgr := NewManager(tmpDir, false)
 
 	sessionID := "test-session-123"
 	dir, err := mgr.GetWorkspaceDir(sessionID)
@@ -46,14 +46,14 @@ func TestGetWorkspaceDir_ExistingSession(t *testing.T) {
 		t.Errorf("Expected session ID %s, got %s", sessionID, mgr.GetSessionID(dir))
 	}
 
-	if len(mgr.createdDirs) != 1 {
-		t.Errorf("Expected 1 tracked dir, got %d", len(mgr.createdDirs))
+	if len(mgr.sessions) != 1 {
+		t.Errorf("Expected 1 tracked session, got %d", len(mgr.sessions))
 	}
 }
 
 func TestGetWorkspaceDir_Reuse(t *testing.T) {
 	tmpDir := t.TempDir()
-	mgr := NewManager(tmpDir)
+	mgr := NewManager(tmpDir, false)
 
 	sessionID := "reuse-session"
 	dir1, _ := mgr.GetWorkspaceDir(sessionID)
@@ -63,14 +63,14 @@ func TestGetWorkspaceDir_Reuse(t *testing.T) {
 		t.Errorf("Expected same directory, got %s and %s", dir1, dir2)
 	}
 
-	if len(mgr.createdDirs) != 1 {
-		t.Errorf("Expected 1 tracked dir, got %d", len(mgr.createdDirs))
+	if len(mgr.sessions) != 1 {
+		t.Errorf("Expected 1 tracked session, got %d", len(mgr.sessions))
 	}
 }
 
 func TestCleanup(t *testing.T) {
 	tmpDir := t.TempDir()
-	mgr := NewManager(tmpDir)
+	mgr := NewManager(tmpDir, false)
 
 	dir1, _ := mgr.GetWorkspaceDir("")
 	dir2, _ := mgr.GetWorkspaceDir("")
@@ -91,7 +91,7 @@ func TestCleanup(t *testing.T) {
 		t.Errorf("Directory 2 should be removed after cleanup")
 	}
 
-	if len(mgr.createdDirs) != 0 {
-		t.Errorf("Expected 0 tracked dirs after cleanup, got %d", len(mgr.createdDirs))
+	if len(mgr.sessions) != 0 {
+		t.Errorf("Expected 0 tracked sessions after cleanup, got %d", len(mgr.sessions))
 	}
 }

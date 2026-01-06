@@ -6,7 +6,7 @@
   "mcpServers": {
     "kiro-subagents": {
       "command": "{{BUDGIE_BINARY}}",
-      "args": ["--agent-timeout", "15m"],
+      "args": ["--agent-timeout", "15m", "--sandbox"],
       "type": "stdio"
     }
   },
@@ -16,9 +16,7 @@
   "toolAliases": {},
   "allowedTools": [
     "@kiro-subagents",
-    "fs_read",
-    "fs_write",
-    "execute_bash"
+    "fs_read"
   ],
   "resources": [
     "file://{{KIRO_DIR}}/sub-agents/prompts/orchestrator.md"
