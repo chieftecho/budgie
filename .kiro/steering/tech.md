@@ -2,7 +2,7 @@
 
 ## Language & Runtime
 
-- Go 1.21+
+- Go 1.23+
 - Module: `budgie`
 
 ## Dependencies

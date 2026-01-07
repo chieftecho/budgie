@@ -109,7 +109,7 @@ A specialized validation agent for testing MCP server functionality, session man
 **Expected:**
 - Response with greeting
 - New sessionId generated
-- Workspace created at ~/kiro/sub-agents/<uuid>
+- Workspace created at ~/.kiro/sub-agents/sessions/<uuid>
 
 ### TC2: Session Persistence
 ```json
@@ -152,7 +152,7 @@ A specialized validation agent for testing MCP server functionality, session man
 ### Execution
 - [ ] kiro-cli called with correct arguments
 - [ ] --no-interactive flag always present
-- [ ] --resume flag never used
+- [ ] --resume flag added when sessionID provided
 - [ ] Working directory set to workspace
 
 ### Error Handling

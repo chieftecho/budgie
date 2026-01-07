@@ -160,7 +160,11 @@ RUN curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | gpg --d
     && rm -rf /var/lib/apt/lists/*
 
 # Additional dev tools
-RUN apt-get update && apt-get install -y --no-install-recommends jq tree ripgrep sqlite3 \
+RUN apt-get update && apt-get install -y --no-install-recommends jq tree ripgrep \
+    && rm -rf /var/lib/apt/lists/*
+
+# sqlite3 for entrypoint auth sync
+RUN apt-get update && apt-get install -y --no-install-recommends sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
 # kiro-cli
@@ -383,7 +387,7 @@ tools:
   - fs_read
   - fs_write
   - execute_bash
-model: claude-3-5-sonnet-20241022
+model: claude-sonnet-4.5
 tags:
   - testing
   - validation

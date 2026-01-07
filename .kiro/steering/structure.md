@@ -15,12 +15,12 @@ budgie/
 │   │   ├── metrics.go      # Monitor, AgentMetrics, RecordSuccess/Failure
 │   │   └── metrics_test.go
 │   ├── kiro/               # Kiro CLI executor
-│   │   ├── executor.go     # Execute(), ExecuteWithWorkDir(), retry logic
+│   │   ├── executor.go     # Execute(), ExecuteWithWorkDir(), GetUniqueResponseFile(), BuildDirectCommand(), BuildDockerCommand()
 │   │   └── executor_test.go
 │   ├── sandbox/            # Sandbox mode integration tests
 │   │   └── sandbox_test.go
 │   └── sessions/           # Session management
-│       ├── session.go      # Manager, GetWorkspaceDir(), Cleanup()
+│       ├── session.go      # Manager, GetWorkspaceDir(), GetSessionID(), Cleanup()
 │       └── session_test.go
 ├── agents/                 # Source agent configs (copied to ~/.kiro/ on install)
 │   ├── config/*.json       # Agent JSON definitions
@@ -30,6 +30,8 @@ budgie/
 ├── Dockerfile              # Sandbox image definition
 ├── README.md
 ├── Makefile
+├── test_frontmatter.go     # Standalone frontmatter test utility
+├── test_health.sh          # Health check test script
 └── go.mod
 ```
 
