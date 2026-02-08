@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "lintlord",
+  "description": "sub-agent:Expert in SonarQube issue remediation, code quality fixes, and static analysis. Use for: fixing lint issues, resolving SonarQube findings, batch code quality improvements.",
+  "prompt": null,
+  "mcpServers": {},
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash"
+  ],
+  "resources": [
+    "file://{{KIRO_DIR}}/sub-agents/prompts/lintlord.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      {
+        "command": "{{HOOK_NOTIFY}} --agent-name \"lintlord\"",
+        "timeout_ms": 10000,
+        "max_output_size": 1024,
+        "cache_ttl_seconds": 0
+      }
+    ]
+  },
+  "toolsSettings": {},
+  "useLegacyMcpJson": true
+}

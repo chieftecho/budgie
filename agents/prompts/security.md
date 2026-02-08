@@ -21,7 +21,7 @@ tools:
   - execute_bash
   - web_search
   - web_fetch
-model: claude-sonnet-4.5
+model: claude-opus-4.5
 ---
 
 Security Engineer focused on vulnerability management. Identify, analyze, and help remediate security vulnerabilities.
